@@ -3,10 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        @stack('styles')
         <title>DevStagram - @yield('title')</title>
-        <script src="{{ asset('js/app.js') }}" defer></script>
         @vite('resources/css/app.css')
+        @vite('resources/js/app.js')
 
     </head>
     <body class="bg-gray-100">

@@ -14,8 +14,8 @@
             <form method="POST" action="{{ route('login') }}" novalidate>
                 @csrf
 
-                @if(session('mensaje'))
-                    <p class="bg bg-red-500 text-white my-2 rounded-lg text-sm p-2  text-center uppercase">{{ session('mensaje') }}</p>
+                @if(session('message'))
+                    <p class="bg bg-red-500 text-white my-2 rounded-lg text-sm p-2  text-center uppercase">{{ session('message') }}</p>
                 @endif
 
                 <div class="mb-5">

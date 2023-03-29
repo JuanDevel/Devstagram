@@ -22,7 +22,7 @@ class LoginController extends Controller
 
         if(!auth()->attempt($request->only('email','password'),$request->remember))
         {
-            return back()->with('mensaje', 'INCORRECT CREDENTIALS');
+            return back()->with('message', 'INCORRECT CREDENTIALS');
         }
 
         // redireccionar

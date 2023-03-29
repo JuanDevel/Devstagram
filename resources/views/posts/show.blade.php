@@ -39,7 +39,7 @@
                     
                 @endauth
                 
-                <p>0 Likes</p>
+                <p>{{$post->likes->count()}} Likes</p>
             </div>
 
             <div class="font-bold">

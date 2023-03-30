@@ -51,8 +51,6 @@ Route::get('/{user:username}/posts/{post}',[PostController::class,'show'])->name
 Route::post('/{user:username}/posts/{post}',[CommentController::class,'store'])->name('comment.store');
 Route::delete('/posts/{post}',[PostController::class,'destroy'])->name('posts.destroy');
 
-
-
 // like fotos
 
 Route::post('/posts/{post}/likes', [LikeController::class,'store'])->name('posts.likes.store');

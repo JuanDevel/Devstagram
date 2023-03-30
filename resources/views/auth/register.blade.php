@@ -29,7 +29,7 @@
                     <label for="username" class="mb-2 block uppercase text-gray-500 font-bold">
                         username
                     </label>
-                    <input id="username" type="text" name="username" placeholder="UserName" class="border p-3 w-full rounded-lg @error('name')
+                    <input id="username" type="text" name="username" placeholder="UserName" class="border p-3 w-full rounded-lg @error('username')
                     border-red-500
                 @enderror" value="{{old('username')}}" />
                     @error('username')
@@ -41,7 +41,7 @@
                     <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">
                         email
                     </label>
-                    <input id="email" type="email" name="email" placeholder="Email" class="border p-3 w-full rounded-lg @error('name')
+                    <input id="email" type="email" name="email" placeholder="Email" class="border p-3 w-full rounded-lg @error('email')
                     border-red-500
                 @enderror" value="{{old('email')}}"/>
                     @error('email')
@@ -53,7 +53,7 @@
                     <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">
                         password
                     </label>
-                    <input id="password" type="password" name="password" placeholder="Password" class="border p-3 w-full rounded-lg @error('name')
+                    <input id="password" type="password" name="password" placeholder="Password" class="border p-3 w-full rounded-lg @error('password')
                     border-red-500
                 @enderror"/>
                     @error('password')

@@ -7,15 +7,28 @@
 @section('content')
     <div class="md:flex md:justify-center">
         <div class="md:w-1/2 bg-white shadow p-6">
-            <form class="mt-10 md:mt-0" action="">
+            <form class="mt-10 md:mt-0" action="{{route('profile.store')}}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="mb-5">
                     <label for="username" class="mb-2 block uppercase text-gray-500 font-bold">
                         Username
                     </label>
-                    <input id="name" type="text" name="username" placeholder="Userame" class="border p-3 w-full rounded-lg @error('username')
+                    <input id="username" type="text" name="username" placeholder="New userame" class="border p-3 w-full rounded-lg @error('username')
                         border-red-500
                     @enderror" value="{{auth()->user()->username}}"/>
                     @error('username')
+                        <p class="bg bg-red-500 text-white my-2 rounded-lg text-sm p-2  text-center uppercase">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div class="mb-5">
+                    <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">
+                        email
+                    </label>
+                    <input id="email" type="email" name="email" placeholder="New email" class="border p-3 w-full rounded-lg @error('email')
+                    border-red-500
+                    @enderror" value="{{auth()->user()->email}}"/>
+                    @error('email')
                         <p class="bg bg-red-500 text-white my-2 rounded-lg text-sm p-2  text-center uppercase">{{ $message }}</p>
                     @enderror
                 </div>

@@ -4,6 +4,6 @@
     Homepage
 @endsection
 
-@section('content')
-    Our homepage
+@section('content')   
+    <x-listar-post :posts="$posts" />
 @endsection

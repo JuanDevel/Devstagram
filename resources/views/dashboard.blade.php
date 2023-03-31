@@ -25,9 +25,27 @@
                     @endauth
                 </div>
                 
-                <p class="text-gray-800 text-sm mb-3 font-bold">0 <span class="font-normal">Followers</span></p>         
-                <p class="text-gray-800 text-sm mb-3 font-bold">0 <span class="font-normal">Following</span></p>
+                <p class="text-gray-800 text-sm mb-3 font-bold">{{$user->followers->count()}} <span class="font-normal"> @choice('Follower|Followers', $user->followers->count()) </span></p>         
+                <p class="text-gray-800 text-sm mb-3 font-bold">{{$user->followings->count()}} <span class="font-normal"> Following</span></p> 
                 <p class="text-gray-800 text-sm mb-3 font-bold">{{ $posts->count() }} <span class="font-normal">Posts</span></p>
+                
+                @auth()
+                    @if ($user->id !== auth()->user()->id)
+                        @if (!$user->following(auth()->user()))
+                            <form action="{{route('users.follow',$user)}}" method="POST">
+                                @csrf
+                                <input type="submit" value="follow" class="bg-blue-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"/>
+                            </form>
+                        @else
+                            <form action="{{route('users.unfollow',$user)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit" value="unfollow" class="bg-red-600 text-white uppercase rounded-lg px-3 py-1 text-xs font-bold cursor-pointer"/>
+                            </form>
+                        @endif
+                    @endif
+                @endauth
+                
             </div>
         </div>
     </div>
@@ -36,29 +54,8 @@
         <h2 class="text-4xl text-center font-black my-10">
             Posts
         </h2>
-
-        @if ($posts->count())
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                @foreach ($posts as $post)
-                    <div>
-                        <a href="{{ route('posts.show',['post'=>$post, 'user'=>$user]) }}">
-                            <img src="{{asset('uploads').'/'. $post->image}}" alt="Image post {{$post->title}}">
-                        </a>
-                    </div>
-                @endforeach
-            </div>
-
-            <div class="my-10">
-                {{$posts->links('')}}
-            </div>
-
-        @else
-
-            <p class="text-gray-700 uppercase text-sm text-center font-bold">0 Posts</p>
-
-        @endif
         
+        <x-listar-post :posts="$posts" />
     </section>
 
 @endsection
